@@ -17,5 +17,13 @@ class City
     cities
   end
 
+  define_method(:save) do
+    test_city = DB.exec("INSERT INTO cities (name) VALUES ('#{@name}') RETURNING id;")
+    @id = test_city.first().fetch('id').to_i()
+  end
+
+  define_method(:==) do |another_city|
+    self.name().==(another_city.name())
+  end
 
 end

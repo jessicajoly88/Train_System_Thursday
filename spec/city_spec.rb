@@ -14,4 +14,20 @@ describe(City) do
       expect(City.all()).to(eq([]))
     end
   end
+
+  describe('#save') do
+    it('saves a city to an array') do
+      test_city = City.new({:name => 'Milan', :id => nil})
+      test_city.save()
+      expect(City.all()).to(eq([test_city]))
+    end
+  end
+
+  describe('#==') do
+    it('recognizes to objects as equal when they have the same properties') do
+      test_city = City.new({:name => 'Milan', :id => nil})
+      test_city2 = City.new({:name => 'Milan', :id => nil})
+      expect(test_city).to(eq(test_city2))
+    end
+  end
 end
