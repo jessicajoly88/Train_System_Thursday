@@ -26,7 +26,7 @@ describe(Train) do
     it('recognizes two objects as equal when they have the same properties') do
       test_train = Train.new({:name => 'Morning Train', :id => nil})
       test_train2 = Train.new({:name => 'Morning Train', :id => nil})
-     expect(test_train).to(eq(test_train2))  
+     expect(test_train).to(eq(test_train2))
     end
   end
 end
