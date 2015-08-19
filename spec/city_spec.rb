@@ -9,5 +9,9 @@ describe(City) do
     end
   end
 
-  
+  describe('.all') do
+    it('is an empty array at first') do
+      expect(City.all()).to(eq([]))
+    end
+  end
 end
