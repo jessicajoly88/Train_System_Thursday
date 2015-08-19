@@ -17,15 +17,29 @@ class Train
         trains.push(Train.new({:name => name, :id => id}))
     end
     trains
-# binding.pry
   end
 
   define_method(:save) do
     result = DB.exec("INSERT INTO trains (name) VALUES ('#{@name}') RETURNING id;")
-    # @id = result.first().fetch('id').to_i()
+    @id = result.first().fetch('id').to_i()
   end
 
   define_method(:==) do |another_train|
     self.name().==(another_train.name())
   end
+
+  define_singleton_method(:find) do |id|
+    all_trains = Train.all()
+    found_train = nil
+    all_trains.each() do |train|
+      if train.id().==(id)
+        found_train = train
+      end
+    end
+    found_train
+# binding.pry
+  end
+
+
+
 end
