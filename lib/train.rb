@@ -12,8 +12,17 @@ class Train
     returned_trains.each() do |train|
         name = train.fetch ('name')
         id = train.fetch ('id').to_i()
-        trains.push(Train.new({:name => 'name', :id => 'id'}))
-      end
-    trains   
+        trains.push(Train.new({:name => name, :id => id}))
+    end
+    trains
+  end
+
+  define_method(:save) do
+    result = DB.exec("INSERT INTO trains (name) VALUES ('#{name}') RETURNING id;")
+    @id = result.first().fetch('id').to_i()
+  end
+
+  define_method(:==) do |another_train|
+    self.name().==(another_train.name()).&self.id().==(another_train.id())
   end
 end
