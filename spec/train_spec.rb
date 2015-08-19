@@ -30,13 +30,13 @@ describe(Train) do
     end
   end
 
-  # describe('#id') do
-  #   it('assigns an ID when you save a train') do
-  #     train = Train.new({:name => 'Morning Train', :id => nil})
-  #     train.save()
-  #     expect(train.id()).to(be_an_instance_of(Fixnum))
-  #   end
-  # end
+  describe('#id') do
+    it('assigns an ID when you save a train') do
+      train = Train.new({:name => 'Morning Train', :id => nil})
+      train.save()
+      expect(train.id()).to(be_an_instance_of(Fixnum))
+    end
+  end
 
   describe('.find') do
     it('finds a train by ID number') do

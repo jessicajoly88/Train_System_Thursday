@@ -37,9 +37,6 @@ class Train
       end
     end
     found_train
-# binding.pry
   end
-
-
 
 end
