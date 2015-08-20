@@ -27,3 +27,17 @@ get('/trains/:id') do
   @train = Train.find(params.fetch('id').to_i())
   erb(:train_specific)
 end
+
+patch('/trains/:id') do
+  name = params.fetch("name")
+  @train = Train.find(params.fetch('id').to_i())
+  @train.update({:name => name})
+  erb(:train_specific)
+end
+
+delete('/trains/:id') do
+  @train = Train.find(params.fetch('id').to_i())
+  @train.delete()
+  @trains = Train.all()
+  erb(:index)
+end
