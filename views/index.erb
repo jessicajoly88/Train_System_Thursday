@@ -2,8 +2,6 @@
 <h1>Welcome to the Train System</h1>
 </center>
 
-<p><a href="/trains/new"> Add a New Train</a></p>
-
 <h3>Here are all of the trains in the database:</h3>
 
 <%if @trains.any?()%>
@@ -17,3 +15,6 @@
 <% else %>
   <p> There are no trains added yet!</p>
 <% end %>
+
+<br>
+<p><a href="/trains/new"> Add a New Train</a></p>

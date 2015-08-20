@@ -12,7 +12,7 @@ describe('train system app',{:type => :feature}) do
       click_link('Add a New Train')
       fill_in('name', :with => 'Morning Train')
       click_button('Add Train')
-      expect(page).to have content('Welcome to the Train System')
+      expect(page).to have_content('Success!')
     end
   end
 
@@ -29,9 +29,25 @@ describe('train system app',{:type => :feature}) do
       train = Train.new({:name => 'Hogwarts', :id => nil})
       train.save()
       visit("/trains/#{train.id}")
-      click_link('Go Back to the Home Page')
+      click_link('Go Back to Index')
       expect(page).to have_content('Welcome to the Train System')
     end
-  end  
 
+    it('allows the user to update the name of the train') do
+      train = Train.new({:name => 'Hogwarts', :id => nil})
+      train.save()
+      visit("/trains/#{train.id}")
+      fill_in('name', :with => 'Morning Train')
+      click_button('Update')
+      expect(page).to have_content('Morning Train')
+    end
+
+    it('allows the user to delete the name of the train') do
+      train = Train.new({:name => 'Hogwarts', :id => nil})
+      train.save()
+      visit("/trains/#{train.id}")
+      click_button('Delete Train')
+      expect(page).to have_content('Welcome to the Train System')
+     end
+  end
 end
