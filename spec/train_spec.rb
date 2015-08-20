@@ -54,4 +54,15 @@ describe(Train) do
       expect(train.name()).to(eq('Seabreeze Train'))
     end
   end
+
+  describe('#delete') do
+    it('lets you delete trains in the database') do
+      train = Train.new({:name => 'Morning Train', :id => nil})
+      train.save()
+      train2 = Train.new({:name => 'Seabreeze Train', :id => nil})
+      train2.save()
+      train.delete()
+      expect(Train.all()).to(eq([train2]))
+    end
+  end
 end
