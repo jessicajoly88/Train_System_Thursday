@@ -1,0 +1,19 @@
+<center>
+<h1>Welcome to the Train System</h1>
+</center>
+
+<p><a href="/trains/new"> Add a New Train</a></p>
+
+<h3>Here are all of the trains in the database:</h3>
+
+<%if @trains.any?()%>
+  <p> Click on a train for more details:</p>
+
+  <ul>
+    <% @trains.each do |train| %>
+      <li><a href="/trains/<%= train.id() %>"><%= train.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p> There are no trains added yet!</p>
+<% end %>
