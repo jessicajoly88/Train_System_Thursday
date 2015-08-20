@@ -45,4 +45,13 @@ describe(Train) do
       expect(Train.find(train.id)).to(eq(train))
     end
   end
+
+  describe ('#update') do
+    it('lets you update trains in the database') do
+      train = Train.new({:name => 'Morning Train', :id => nil})
+      train.save()
+      train.update({:name => 'Seabreeze Train'})
+      expect(train.name()).to(eq('Seabreeze Train'))
+    end
+  end
 end
